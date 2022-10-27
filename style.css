@@ -37,22 +37,22 @@ button {
     grid-template-rows: 50px 15px 1fr;
 }
 
-.clear {
+.clear-section {
     place-self: start;
 }
 
-.numerical {
+.numerical-section {
     grid-column-start: 1;
     grid-row-start: 3;
     margin-right: 15px;
 }
 
-.operators {
+.operator-section {
     grid-column-start: 2;
     grid-row-start: 3;
 }
 
-.add {
+/* .add {
     grid-column-start: 2;
     grid-row-start: 1;  
-}
+} */
