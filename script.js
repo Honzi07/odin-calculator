@@ -25,22 +25,22 @@ function displayContent() {
 
 numbers.forEach((number) => {
     number.addEventListener('click', (e) => {
+        replace0()
         display += e.target.textContent;
-        console.log(display);
-    });
+    })
 });
 
 operators.forEach((operator) => {
     operator.addEventListener('click', (e) => {
-        checkOperators()
+        checkOperator()
         storage.push(parseFloat(display));
         display = '';
         display += e.target.textContent;
 
-    });
+    })
 });
 
-function checkOperators() {
+function checkOperator() {
     for(let i = 0; i < display.length; i++) {
         switch(display[i]) {
             case '+':
@@ -60,7 +60,7 @@ function checkOperators() {
 };
 
 
-// function checkOperators() {
+// function checkOperator() {
 //     for(let i = 0; i < display.length; i++) {
 //         if(display[i] === '+') {
 //             add();
@@ -94,34 +94,35 @@ function multiply() {
     storage.unshift(display);
 };
 
+function replace0() {
+    if(display === '0') {
+        display = display.substring(1);
+    }
+};
 
 equal.addEventListener('click', () => {
-    checkOperators();
+    checkOperator();
+    storage.length = 0;
 });
 
+clear.addEventListener('click', () => {
+    display = 0;
+    storage.length = 0;
+});
 
+clearEntry.addEventListener('click', () => {
+    display = 0;
+});
 
-// clear.addEventListener('click', () => {
-//     display = 0;
-//     storage.length = 0;
-//     newArr.length = 0;
-// });
-
-// clearEntry.addEventListener('click', () => {
-//     display = 0;
-// });
-
-// clearLast.addEventListener('click', () => {
-//     storage.pop();
-//     display = storage.join('');
-// });
-
-
+clearLast.addEventListener('click', () => {
+    display = display.slice(0, -1);
+    if(display === '') {
+        display = 0;
+    }
+});
 
 document.addEventListener('click', () => {
     displayContent();
-    // checkOperators()
-    // console.log(newArr)
     console.log(storage);
 });
 
