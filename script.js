@@ -12,89 +12,116 @@ const clearEntry = document.querySelector('.clear-entry');
 const clearLast = document.querySelector('.clear-last');
 
 
-
 let display = '';
 const storage = [];
-let newArr = [];
-
 
 function displayContent() {
+    display = display.toString();
     inputDisplay.textContent = display;
+    if(display.length > 13) {
+        inputDisplay.textContent = display.substring(0, 13);
+    }
 };
-
 
 numbers.forEach((number) => {
     number.addEventListener('click', (e) => {
-        storage.push(e.target.textContent);
-        display = storage.join('');
-        console.log(storage);
+        display += e.target.textContent;
+        console.log(display);
     });
 });
 
 operators.forEach((operator) => {
     operator.addEventListener('click', (e) => {
-        newArr.push(parseFloat(storage.join('')));
-        display = e.target.textContent;
-        newArr.push(e.target.textContent);
-        storage.length = 0;
-        console.log(storage);
+        checkOperators()
+        storage.push(parseFloat(display));
+        display = '';
+        display += e.target.textContent;
+
     });
 });
 
-equal.addEventListener('click', () => {
-    test();
-    newArr.length = 0;
-    storage.length = 0;
-    newArr.push(display);
-});
-
-// function test() {
-//     for(let i = 0; i < newArr.length; i++) {
-//         switch (newArr[i]) {
-//             case '+':
-//                 display = newArr[0] + parseFloat(display);
-//                 break;
-//             case '-':
-//                 display = newArr[0] - parseFloat(display);
-//                 break;
-//             case '÷':
-//                 display = newArr[0] / parseFloat(display);
-//                 break;
-//             case 'x':
-//                 display = newArr[0] * parseFloat(display);
-//                 break;
-//         } 
-//     }
-
-// };
-
-
-function test() {
-    if(newArr.includes('+')) {
-        display = newArr[0] + parseFloat(display);
+function checkOperators() {
+    for(let i = 0; i < display.length; i++) {
+        switch(display[i]) {
+            case '+':
+                add();
+                break;
+            case '-':
+                subtract();
+                break;
+            case 'x':
+                multiply();
+                break;
+            case '÷':
+                divide();
+                break;
+        }
     }
 };
 
 
-clear.addEventListener('click', () => {
-    display = 0;
-    storage.length = 0;
-    newArr.length = 0;
+// function checkOperators() {
+//     for(let i = 0; i < display.length; i++) {
+//         if(display[i] === '+') {
+//             add();
+//         } else if(display[i] === '-') {
+//             subtract();
+//         } else if(display[i] === '÷') {
+//             divide();
+//         } else if(display[i] === 'x') {
+//             multiply();
+//         }
+//     }
+// };
+
+function add() {
+    display = storage[0] + parseFloat(display.substring(1, display.length));
+    storage.unshift(display);
+};
+
+function subtract() {
+    display = storage[0] - parseFloat(display.substring(1, display.length));
+    storage.unshift(display);
+};
+
+function divide() {
+    display = storage[0] / parseFloat(display.substring(1, display.length));
+    storage.unshift(display);
+};
+
+function multiply() {
+    display = storage[0] * parseFloat(display.substring(1, display.length));
+    storage.unshift(display);
+};
+
+
+equal.addEventListener('click', () => {
+    checkOperators();
 });
 
-clearEntry.addEventListener('click', () => {
-    display = 0;
-});
 
-clearLast.addEventListener('click', () => {
-    storage.pop();
-    display = storage.join('');
-});
+
+// clear.addEventListener('click', () => {
+//     display = 0;
+//     storage.length = 0;
+//     newArr.length = 0;
+// });
+
+// clearEntry.addEventListener('click', () => {
+//     display = 0;
+// });
+
+// clearLast.addEventListener('click', () => {
+//     storage.pop();
+//     display = storage.join('');
+// });
 
 
 
 document.addEventListener('click', () => {
     displayContent();
-    console.log(newArr)
+    // checkOperators()
+    // console.log(newArr)
+    console.log(storage);
 });
 
