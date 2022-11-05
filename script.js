@@ -6,13 +6,14 @@ const btnAdd = document.querySelector('.add');
 const btnSubtract = document.querySelector('.subtract');
 const btnMultiply = document.querySelector('.multiply');
 const btnDivide = document.querySelector('.divide');
+const btnDot = document.querySelector('.dot');
 const equal = document.querySelector('.equal');
 const clear = document.querySelector('.clear');
 const clearEntry = document.querySelector('.clear-entry');
 const clearLast = document.querySelector('.clear-last');
 
 
-let display = '';
+let display = '0';
 const storage = [];
 
 function displayContent() {
@@ -36,8 +37,11 @@ operators.forEach((operator) => {
         storage.push(parseFloat(display));
         display = '';
         display += e.target.textContent;
-
     })
+});
+
+btnDot.addEventListener('click', () => {
+    display += btnDot.textContent
 });
 
 function checkOperator() {
