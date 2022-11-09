@@ -26,14 +26,14 @@ function displayContent() {
 
 numbers.forEach((number) => {
     number.addEventListener('click', (e) => {
-        replace0()
+        replace0();
         display += e.target.textContent;
     })
 });
 
 operators.forEach((operator) => {
     operator.addEventListener('click', (e) => {
-        checkOperator()
+        checkOperator();
         storage.push(parseFloat(display));
         display = '';
         display += e.target.textContent;
@@ -41,7 +41,7 @@ operators.forEach((operator) => {
 });
 
 btnDot.addEventListener('click', () => {
-    display += btnDot.textContent
+    display += btnDot.textContent;
 });
 
 function checkOperator() {
@@ -64,44 +64,47 @@ function checkOperator() {
 };
 
 
-// function checkOperator() {
-//     for(let i = 0; i < display.length; i++) {
-//         if(display[i] === '+') {
-//             add();
-//         } else if(display[i] === '-') {
-//             subtract();
-//         } else if(display[i] === '÷') {
-//             divide();
-//         } else if(display[i] === 'x') {
-//             multiply();
-//         }
-//     }
-// };
-
 function add() {
-    display = storage[0] + parseFloat(display.substring(1, display.length));
+    display = display.substring(1, display.length);
+    display = storage[0] + parseFloat(display);
+    display = parseFloat(display.toFixed(8));
     storage.unshift(display);
 };
 
 function subtract() {
-    display = storage[0] - parseFloat(display.substring(1, display.length));
+    display = display.substring(1, display.length);
+    display = storage[0] - parseFloat(display);
+    display = parseFloat(display.toFixed(8));
     storage.unshift(display);
 };
 
+
 function divide() {
-    display = storage[0] / parseFloat(display.substring(1, display.length));
+    display = display.substring(1, display.length);
+    display = storage[0] / parseFloat(display);
+    display = parseFloat(display.toFixed(8));
     storage.unshift(display);
 };
 
 function multiply() {
-    display = storage[0] * parseFloat(display.substring(1, display.length));
+    display = display.substring(1, display.length);
+    display = storage[0] * parseFloat(display);
+    display = parseFloat(display.toFixed(8));
     storage.unshift(display);
 };
+
 
 function replace0() {
     if(display === '0') {
         display = display.substring(1);
     }
+};
+
+function disableDot() {
+    let ans = display.match(/\./g) ? true : false;
+    if(ans === true) {
+        btnDot.style.pointerEvents = 'none';
+    } else  btnDot.style.removeProperty('pointer-events');
 };
 
 equal.addEventListener('click', () => {
@@ -127,6 +130,7 @@ clearLast.addEventListener('click', () => {
 
 document.addEventListener('click', () => {
     displayContent();
+    disableDot();
     console.log(storage);
 });
 
