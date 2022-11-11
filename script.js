@@ -63,21 +63,19 @@ function checkOperator() {
     }
 };
 
-
 function add() {
-    display = display.substring(1, display.length);
+    display = display.substring(1, display.length)
     display = storage[0] + parseFloat(display);
     display = parseFloat(display.toFixed(8));
     storage.unshift(display);
 };
 
 function subtract() {
-    display = display.substring(1, display.length);
+    display = display.substring(1, display.length)
     display = storage[0] - parseFloat(display);
     display = parseFloat(display.toFixed(8));
     storage.unshift(display);
 };
-
 
 function divide() {
     display = display.substring(1, display.length);
@@ -92,7 +90,6 @@ function multiply() {
     display = parseFloat(display.toFixed(8));
     storage.unshift(display);
 };
-
 
 function replace0() {
     if(display === '0') {
@@ -131,6 +128,14 @@ clearLast.addEventListener('click', () => {
 document.addEventListener('click', () => {
     displayContent();
     disableDot();
+    disableEqual();
     console.log(storage);
 });
 
+function disableEqual() {
+    const op = ['x','-','÷','+'];
+        if((op.indexOf(display) != -1 && display.length === 1) 
+        || (op.indexOf(display) === -1 && display[1] === '.' && display.length <= 2)) {
+            equal.style.pointerEvents = 'none';
+        } else  equal.style.removeProperty('pointer-events');
+};
