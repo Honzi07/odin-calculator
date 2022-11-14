@@ -49,7 +49,7 @@ button {
 
 .operator-section {
     grid-column-start: 2;
-    grid-row-start: 3;
+    grid-row-start: 1;
 }
 
 /* .add {
