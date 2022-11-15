@@ -2,10 +2,6 @@ const numbers = document.querySelectorAll('.number');
 const operators = document.querySelectorAll('.operator');
 const inputDisplay = document.querySelector('.input');
 const outputDisplay = document.querySelector('.output');
-const btnAdd = document.querySelector('.add');
-const btnSubtract = document.querySelector('.subtract');
-const btnMultiply = document.querySelector('.multiply');
-const btnDivide = document.querySelector('.divide');
 const btnDot = document.querySelector('.dot');
 const btnPlusMinus = document.querySelector('.plusMinus');
 const equal = document.querySelector('.equal');
@@ -13,8 +9,8 @@ const clear = document.querySelector('.clear');
 const clearEntry = document.querySelector('.clear-entry');
 const clearLast = document.querySelector('.clear-last');
 
-
 let display = '0';
+let outDisplay = '0';
 const storage = [];
 
 function displayContent() {
@@ -24,6 +20,18 @@ function displayContent() {
         inputDisplay.textContent = display.substring(0, 13);
     }
 };
+
+function displayCurrentNum() {
+    outputDisplay.textContent = outDisplay;
+    if(storage[0] != undefined) {
+        outDisplay = storage[0].toString();
+    } if (outDisplay.length > 13) {
+        outputDisplay.textContent = outDisplay.substring(0, 13);
+    } if(storage[0] === undefined) {
+        outDisplay = '0';
+    }
+};
+
 
 numbers.forEach((number) => {
     number.addEventListener('click', (e) => {
@@ -35,6 +43,7 @@ numbers.forEach((number) => {
 operators.forEach((operator) => {
     operator.addEventListener('click', (e) => {
         checkOperator();
+        displayCurrentNum();
         storage.push(parseFloat(display));
         display = '';
         display += e.target.textContent;
@@ -53,13 +62,13 @@ function plusMinus() {
     const op = ['x','-','÷','+'];
     if(display >= 1 && !isNaN(display[0])) {
         display = `-${display}`;
-        console.log('1')
+        console.log('1');
     } else if(op.indexOf(display) != -1 || (typeof parseFloat(display[1]) === 'number' && display.length >= 2 && display[0] != '-' && display[1] != '-')) {
-        display = (display.substring(0, 1) + '-' + display.substring(1))
-        console.log('2')
+        display = (display.substring(0, 1) + '-' + display.substring(1));
+        console.log('2');
     } else {
         display = display.replace(/-/, '');
-        console.log('3')
+        console.log('3');
     }
 };
 
@@ -91,7 +100,7 @@ function add() {
 
 function subtract() {
     if(storage.length === 0) {
-        storage.push(parseFloat(display))
+        storage.push(parseFloat(display));
     } else {
         display = display.substring(1, display.length)
         display = storage[0] - parseFloat(display);
@@ -142,11 +151,13 @@ function disableEqual() {
 
 equal.addEventListener('click', () => {
     checkOperator();
+    outDisplay = 0;
     storage.length = 0;
 });
 
 clear.addEventListener('click', () => {
     display = 0;
+    outDisplay = 0;
     storage.length = 0;
 });
 
@@ -163,6 +174,7 @@ clearLast.addEventListener('click', () => {
 
 document.addEventListener('click', () => {
     displayContent();
+    displayCurrentNum();
     disableDot();
     disableEqual();
     console.log(storage);
