@@ -130,11 +130,6 @@ function replace0() {
 };
 
 function disableDot() {
-    // let ans = display.match(/\./g) ? true : false;
-    // if(ans === true) {
-    //     btnDot.style.pointerEvents = 'none';
-    // } else  btnDot.style.removeProperty('pointer-events');
-
     if(display.match(/\./g)) {
         btnDot.style.pointerEvents = 'none';
     } else  btnDot.style.removeProperty('pointer-events');
@@ -178,4 +173,11 @@ document.addEventListener('click', () => {
     disableDot();
     disableEqual();
     console.log(storage);
+});
+
+window.addEventListener('keydown', (e) => {
+    const key = document.querySelector(`button[data-key='${e.key}']`);
+    if(key === null) {
+        e.preventDefault();
+    } else key.click();
 });

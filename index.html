@@ -7,6 +7,7 @@
     <title>Calculator</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="node_modules/normalize.css/normalize.css" />
+  
     <script src="script.js" defer></script>
     <script src="https://kit.fontawesome.com/159233ae30.js" crossorigin="anonymous"></script>
   </head>
@@ -19,30 +20,30 @@
         </div>
         <div class="buttons">
             <div class="clear-section">
-                <button class="clear-entry">CE</button>
-                <button class="clear">C</button>
-                <button class="clear-last"><i class="fa-solid fa-delete-left"></i></button>
+                <button class="clear-entry" data-key="Delete">CE</button>
+                <button class="clear" data-key="Escape">C</button>
+                <button class="clear-last" data-key="Backspace"><i class="fa-solid fa-delete-left"></i></button>
             </div>
             <div class="numerical-section">
-                <button class="number">7</button>
-                <button class="number">8</button>
-                <button class="number">9</button>
-                <button class="number">4</button>
-                <button class="number">5</button>
-                <button class="number">6</button>
-                <button class="number">1</button>
-                <button class="number">2</button>
-                <button class="number">3</button>
-                <button class="number">0</button>
-                <button class="dot">.</button>
-                <button class="equal">=</button>
+                <button class="number" data-key="7">7</button>
+                <button class="number" data-key="8">8</button>
+                <button class="number" data-key="9">9</button>
+                <button class="number" data-key="4">4</button>
+                <button class="number" data-key="5">5</button>
+                <button class="number" data-key="6">6</button>
+                <button class="number" data-key="1">1</button>
+                <button class="number" data-key="2">2</button>
+                <button class="number" data-key="3">3</button>
+                <button class="number" data-key="0">0</button>
+                <button class="dot" data-key=".">.</button>
+                <button class="equal" data-key="Enter">=</button>
             </div>
             <div class="operator-section">
-                <button class="plusMinus">+/-</button>
-                <button class="operator add">+</button>
-                <button class="operator multiply">x</button>
-                <button class="operator divide">÷</button>
-                <button class="operator subtract">-</button>
+                <button class="plusMinus" data-key="F9">+/-</button>
+                <button class="operator add" data-key="+">+</button>
+                <button class="operator multiply" data-key="*">x</button>
+                <button class="operator divide" data-key="/">÷</button>
+                <button class="operator subtract" data-key="-">-</button>
             </div>
         </div>
       </div>
