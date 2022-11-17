@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    font-family: 'Play', sans-serif;
 }
 
 body {
@@ -21,13 +22,18 @@ body {
 }
 
 .display {
-    font-size: 2.5rem;
-    text-align: end;
-    color: green;
     background-color: #303841;
     border-top: inset #F07B3F;
     border-bottom: inset #F07B3F;
-
+    font-size: 2.5rem;
+    text-align: end;
+    color: #098f1f;
+    text-shadow:
+    0 0 10px #098f1f,
+    0 0 21px #077719,
+    0 0 42px #077719,
+    0 0 52px #077719,
+    0 0 72px #077719;
 }
 
 button {
@@ -44,18 +50,11 @@ button {
     /* grid-template-columns: 175px 50px;
     gap: 10px;
     grid-template-rows: 50px 15px 1fr; */
+    padding: 10px;
 }
 
 .container-buttons {
     max-width: 250px;
-}
-
-.subtract {
-    background-color: #D72323;
-}
-
-.equal {
-    background-color: black;
 }
 
 .clear-section > button {
@@ -73,19 +72,19 @@ button {
     color: white;
 }
 
-.subtract {
+.operator.subtract {
     background-color: #D72323;
     color: black;
 }
 
-.equal {
-    background-color: #303841;
-    color: white;
-}
-
-.add {
+.operator.add {
     background-color: #78c8e7;
     color: black;
+}
+
+#equal {
+    background-color: #303841;
+    color: white;
 }
 
 .container-test {
