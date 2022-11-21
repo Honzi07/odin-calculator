@@ -12,19 +12,35 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+
+    /* height: 100vh; */
 }
 
 .calculator-body {
+    position: absolute;
+
     /* width: 70%; */
     /* min-width: 350px; */
-    max-width: 800px;
-    background-color: #303841;
+    /* max-width: 800px; */
+    padding: 20px;
+    /* background-color: #303841; */
+    background-image: url('texture.jpg');
+    /* background-color: #702388; */
+    border-radius: 3px;
+    box-shadow: 
+    0px -5px 8px 0px #00000057,
+    0px 15px 8px 0px #00000087;
 }
 
 .display {
-    background-color: #303841;
-    border-top: inset #F07B3F;
-    border-bottom: inset #F07B3F;
+    max-width: 85%;
+    margin: 0 auto;
+    margin-bottom: 3rem;
+    margin-top: 1rem;
+    padding-right: 5px;
+    background-color: #191c20;
+    border-top: 5px inset #7d7d7d;
+    border-bottom: 5px inset #373f48;
     font-size: 2.5rem;
     text-align: end;
     color: #098f1f;
@@ -39,8 +55,8 @@ body {
 button {
     font-weight: bold;
     border-radius: 3px;
-    min-width: 50px;
-    min-height: 30px;
+    min-width: 60px;
+    min-height: 38px;
     box-shadow: 0px 0px 2px 1px black;
   }
 
@@ -63,6 +79,7 @@ button {
 
 .container-buttons {
     /* max-width: 250px; */
+    background-color: #303841;
     border: inset 5px #303841;
 }
 
@@ -107,6 +124,7 @@ button {
 }
 
 .divide {
+    /* font-size: ; */
     grid-area: divide;
 }
 
@@ -119,17 +137,68 @@ position: relative;
 top: 2px;
 }
 
-.container-test {
+.container-white {
     position: absolute;
-    z-index: -1;
+    top: 70px;
+    left: -10px;
+    width: 360px;
+    z-index: -2;
 }
 
-.test {
-    width: calc(100vw - 30px);
+.grip {
+
+    /* width: calc(100vw - 30px); */
     height: 20px;
     border-radius: 6px;
     background-color: #EEEEEE;
+    z-index: -1;
 }
+
+.white-line {
+    position: absolute;
+    height: 510px;
+    width: 15px;
+    top: -72px;
+    background-color: #e7e7e7;
+    box-shadow: -5px 0px 9px 3px #00000033;
+    border-radius: 4px;
+}
+
+.white-line.left {
+    left: 3px;
+}
+
+.white-line.right {
+    right: 3px;
+}
+
+
+
+
+
+/* .white.left {
+    position: absolute;
+    height: 510px;
+    width: 15px;
+    top: -72px;
+    left: 3px;
+    background-color: #e7e7e7;
+    z-index: -3;
+    box-shadow: -5px 0px 9px 3px #00000033;
+    border-radius: 4px;
+}
+
+.white.right {
+    position: absolute;
+    height: 510px;
+    width: 15px;
+    top: -72px;
+    right: 3px;
+    background-color: #e7e7e7;
+    z-index: -3;
+    box-shadow: 5px 0px 9px 3px #00000033;
+    border-radius: 4px;
+} */
 
 
 /* .add {
