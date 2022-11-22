@@ -12,20 +12,12 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-
-    /* height: 100vh; */
 }
 
 .calculator-body {
     position: absolute;
-
-    /* width: 70%; */
-    /* min-width: 350px; */
-    /* max-width: 800px; */
     padding: 20px;
-    /* background-color: #303841; */
     background-image: url('texture.jpg');
-    /* background-color: #702388; */
     border-radius: 3px;
     box-shadow: 
     0px -5px 8px 0px #00000057,
@@ -35,8 +27,8 @@ body {
 .display {
     max-width: 85%;
     margin: 0 auto;
-    margin-bottom: 3rem;
-    margin-top: 1rem;
+    margin-bottom: 48px;
+    margin-top: 16px;
     padding-right: 5px;
     background-color: #191c20;
     border-top: 5px inset #7d7d7d;
@@ -66,7 +58,6 @@ button {
     row-gap: 20px;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(5, 1fr);
-    /* grid-auto-flow: column; */
     grid-template-areas: 
     'clear clear clear plusMinus'
     'num num num divide'
@@ -78,7 +69,6 @@ button {
 }
 
 .container-buttons {
-    /* max-width: 250px; */
     background-color: #303841;
     border: inset 5px #303841;
 }
@@ -86,13 +76,11 @@ button {
 .clear, .clear-entry, .clear-last {
     background-color: #F07B3F;
     color: black;
-    /* grid-area: clear; */
 }
 
 .number, .dot{
     background-color: #fff7e5;
     color: black;
-    /* grid-area: num; */
 }
 
 .operator, .plusMinus {
@@ -116,7 +104,6 @@ button {
 .equal {
     background-color: #303841;
     color: #fff7e5;
-    /* grid-area: num; */
 }
 
 .multiply {
@@ -124,7 +111,6 @@ button {
 }
 
 .divide {
-    /* font-size: ; */
     grid-area: divide;
 }
 
@@ -146,8 +132,6 @@ top: 2px;
 }
 
 .grip {
-
-    /* width: calc(100vw - 30px); */
     height: 20px;
     border-radius: 6px;
     background-color: #EEEEEE;
@@ -160,7 +144,7 @@ top: 2px;
     width: 15px;
     top: -72px;
     background-color: #e7e7e7;
-    box-shadow: -5px 0px 9px 3px #00000033;
+    box-shadow: 0px 0px 13px 5px #00000033;
     border-radius: 4px;
 }
 
@@ -172,11 +156,27 @@ top: 2px;
     right: 3px;
 }
 
+.number:hover, .dot:hover {
+    background-color: hsl(42, 100%, 85%);
+}
 
+.operator:hover, .equal:hover, .plusMinus:hover {
+    background-color: hsl(212, 15%, 32%);
+}
 
+.add:hover {
+    background-color: hsl(197, 70%, 79%);
+}
 
+.subtract:hover {
+    background-color: hsl(0, 72%, 59%);
+}
 
-/* .white.left {
+.clear:hover, .clear-entry:hover, .clear-last:hover {
+    background-color: hsl(20, 86%, 69%);
+}
+
+/* .white-line.left {
     position: absolute;
     height: 510px;
     width: 15px;
@@ -188,7 +188,7 @@ top: 2px;
     border-radius: 4px;
 }
 
-.white.right {
+.white-line.right {
     position: absolute;
     height: 510px;
     width: 15px;
@@ -198,14 +198,4 @@ top: 2px;
     z-index: -3;
     box-shadow: 5px 0px 9px 3px #00000033;
     border-radius: 4px;
-} */
-
-
-/* .add {
-    grid-column-start: 2;
-    grid-row-start: 1;  
-} */
-
-/* .equal {
-    background-color: green;
 } */
