@@ -16,8 +16,8 @@ const storage = [];
 function displayContent() {
     display = display.toString();
     inputDisplay.textContent = display;
-    if(display.length > 13) {
-        inputDisplay.textContent = display.substring(0, 13);
+    if(display.length > 11) {
+        inputDisplay.textContent = display.substring(0, 11);
     }
 };
 
@@ -25,13 +25,12 @@ function displayCurrentNum() {
     outputDisplay.textContent = outDisplay;
     if(storage[0] != undefined) {
         outDisplay = storage[0].toString();
-    } if (outDisplay.length > 13) {
-        outputDisplay.textContent = outDisplay.substring(0, 13);
+    } if (outDisplay.length > 11) {
+        outputDisplay.textContent = outDisplay.substring(0, 11);
     } if(storage[0] === undefined) {
         outDisplay = '0';
     }
 };
-
 
 numbers.forEach((number) => {
     number.addEventListener('click', (e) => {
@@ -60,7 +59,7 @@ btnPlusMinus.addEventListener('click',() => {
 
 function plusMinus() {
     const op = ['x','-','÷','+'];
-    if(display >= 1 && !isNaN(display[0])) {
+    if((display >= 1 && !isNaN(display[0])) || (display[0] === '0') && display[1] === '.') {
         display = `-${display}`;
         console.log('1');
     } else if(op.indexOf(display) != -1 || (typeof parseFloat(display[1]) === 'number' && display.length >= 2 && display[0] != '-' && display[1] != '-')) {
@@ -73,7 +72,7 @@ function plusMinus() {
 };
 
 function checkOperator() {
-    if(typeof display[0] === 'string' && typeof parseFloat(display[1]) === 'number' && display.length >= 2) {
+    if(display.match(/\d/g)) {
         switch(display[0]) {
             case '+':
                 add();
@@ -136,10 +135,9 @@ function disableDot() {
 };
 
 function disableEqual() {
-    const op = ['x','-','÷','+'];
-        if((op.indexOf(display) != -1 && display.length === 1)
-        || (op.indexOf(display) === -1 && display[1] === '.' && display.length <= 3) 
-        || ((op.indexOf(display[0]) > -1 && op.indexOf(display[1]) > -1) && display.length <= 2)) {
+    const regExOp = /[-x+÷]/g
+        if ((display[0].search(regExOp) == 0 && display.length == 1) 
+        || (display[0].search(regExOp) == 0 && display[1].search(regExOp) == 0 && display.length == 2)) {
             equal.style.pointerEvents = 'none';
         } else  equal.style.removeProperty('pointer-events');
 };
