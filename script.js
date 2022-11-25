@@ -135,7 +135,7 @@ function disableDot() {
 };
 
 function disableEqual() {
-    const regExOp = /[-x+÷]/g
+    const regExOp = /[-x+÷]/g;
         if ((display[0].search(regExOp) == 0 && display.length == 1) 
         || (display[0].search(regExOp) == 0 && display[1].search(regExOp) == 0 && display.length == 2)) {
             equal.style.pointerEvents = 'none';
@@ -143,9 +143,13 @@ function disableEqual() {
 };
 
 equal.addEventListener('click', () => {
-    checkOperator();
-    outDisplay = 0;
-    storage.length = 0;
+    if(display[0] === '÷' && display.slice(1) == 0) {
+        display = 'Just why?';
+    } else {
+        checkOperator();
+        outDisplay = 0;
+        storage.length = 0;
+    }
 });
 
 clear.addEventListener('click', () => {
