@@ -90,12 +90,14 @@ button {
 }
 
 .subtract {
+    font-size: 1.25rem;
     background-color: #D72323;
     color: black;
     grid-area: subtract;
 }
 
 .add {
+    font-size: 1.25rem;
     background-color: #78c8e7;
     color: black;
     grid-area: add;
@@ -111,6 +113,7 @@ button {
 }
 
 .divide {
+    font-size: 1.25rem;
     grid-area: divide;
 }
 
@@ -175,27 +178,3 @@ top: 2px;
 .clear:hover, .clear-entry:hover, .clear-last:hover {
     background-color: hsl(20, 86%, 69%);
 }
-
-/* .white-line.left {
-    position: absolute;
-    height: 510px;
-    width: 15px;
-    top: -72px;
-    left: 3px;
-    background-color: #e7e7e7;
-    z-index: -3;
-    box-shadow: -5px 0px 9px 3px #00000033;
-    border-radius: 4px;
-}
-
-.white-line.right {
-    position: absolute;
-    height: 510px;
-    width: 15px;
-    top: -72px;
-    right: 3px;
-    background-color: #e7e7e7;
-    z-index: -3;
-    box-shadow: 5px 0px 9px 3px #00000033;
-    border-radius: 4px;
-} */
