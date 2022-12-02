@@ -46,6 +46,7 @@ operators.forEach((operator) => {
         storage.push(parseFloat(display));
         display = '';
         display += e.target.textContent;
+        clicked = 1;
     })
 });
 
@@ -53,21 +54,23 @@ btnDot.addEventListener('click', () => {
     display += btnDot.textContent;
 });
 
+let clicked = 1;
 btnPlusMinus.addEventListener('click',() => {
     plusMinus();
 });
 
 function plusMinus() {
-    const op = ['x','-','÷','+'];
-    if((display >= 1 && !isNaN(display[0])) || (display[0] === '0') && display[1] === '.') {
-        display = `-${display}`;
-        console.log('1');
-    } else if(op.indexOf(display) != -1 || (typeof parseFloat(display[1]) === 'number' && display.length >= 2 && display[0] != '-' && display[1] != '-')) {
-        display = (display.substring(0, 1) + '-' + display.substring(1));
-        console.log('2');
-    } else {
-        display = display.replace(/-/, '');
-        console.log('3');
+    const index = display.search(/[.0-9]/);
+    const regExOp = display.search(/[-x+÷]/g);
+    clicked ++;
+    if(clicked % 2 === 0) {
+       if(display[0] === '-' || regExOp === 0) {
+           display = `${display.slice(0, index)}-${display.slice(1)}`;
+       } if(regExOp === -1){
+           display = `-${display}`;
+       }
+    } if(clicked % 2 === 1 && display[1] !== undefined) {
+       display = display.replace(/-/, '');
     }
 };
 
@@ -174,7 +177,6 @@ document.addEventListener('click', () => {
     displayCurrentNum();
     disableDot();
     disableEqual();
-    console.log(storage);
 });
 
 window.addEventListener('keydown', (e) => {
